@@ -1,0 +1,128 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Fabricas\**" />
+    <Compile Remove="Seeders\**" />
+    <EmbeddedResource Remove="Fabricas\**" />
+    <EmbeddedResource Remove="Seeders\**" />
+    <None Remove="Fabricas\**" />
+    <None Remove="Seeders\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20210918024352_Administracion_Fertilizante.cs" />
+    <Compile Remove="Migrations\20210918024352_Administracion_Fertilizante.Designer.cs" />
+    <Compile Remove="Migrations\20210918030107_Administracion_Fertilizante.cs" />
+    <Compile Remove="Migrations\20210918030107_Administracion_Fertilizante.Designer.cs" />
+    <Compile Remove="Migrations\20210920113303_migraciones_por_borrar_Importador.cs" />
+    <Compile Remove="Migrations\20210920113303_migraciones_por_borrar_Importador.Designer.cs" />
+    <Compile Remove="Migrations\20210920113908_migraciones_por_borrar_Importador-2.cs" />
+    <Compile Remove="Migrations\20210920113908_migraciones_por_borrar_Importador-2.Designer.cs" />
+    <Compile Remove="Migrations\20210920122342_migraciones_por_borrar_Importador-3.cs" />
+    <Compile Remove="Migrations\20210920122342_migraciones_por_borrar_Importador-3.Designer.cs" />
+    <Compile Remove="Migrations\20210925043542_AgregandoProveedoresAlSistema.cs" />
+    <Compile Remove="Migrations\20210925043542_AgregandoProveedoresAlSistema.Designer.cs" />
+    <Compile Remove="Migrations\20210925051345_AgregandoProveedoresFertilizanteAlSistema.cs" />
+    <Compile Remove="Migrations\20210925051345_AgregandoProveedoresFertilizanteAlSistema.Designer.cs" />
+    <Compile Remove="Migrations\20210925052613_AgregandoProveedoresFertilizanteAlSistema.cs" />
+    <Compile Remove="Migrations\20210925052613_AgregandoProveedoresFertilizanteAlSistema.Designer.cs" />
+    <Compile Remove="Migrations\20210925071643_AgregandoProveedoresFertilizanteAlSistema.cs" />
+    <Compile Remove="Migrations\20210925071643_AgregandoProveedoresFertilizanteAlSistema.Designer.cs" />
+    <Compile Remove="Migrations\20210925072007_AgregandoProveedoresFertilizanteAlSistema.cs" />
+    <Compile Remove="Migrations\20210925072007_AgregandoProveedoresFertilizanteAlSistema.Designer.cs" />
+    <Compile Remove="Migrations\20210925073851_AgregandoProveedoresFertilizanteAlSistema.cs" />
+    <Compile Remove="Migrations\20210925073851_AgregandoProveedoresFertilizanteAlSistema.Designer.cs" />
+    <Compile Remove="Migrations\20210926002627_AgregandoProveedoresFertilizanteAlSistema.cs" />
+    <Compile Remove="Migrations\20210926002627_AgregandoProveedoresFertilizanteAlSistema.Designer.cs" />
+    <Compile Remove="Migrations\20210927013518_Arreglando_modelos.cs" />
+    <Compile Remove="Migrations\20210927013518_Arreglando_modelos.Designer.cs" />
+    <Compile Remove="Migrations\20210927014055_Arreglando_modelos.cs" />
+    <Compile Remove="Migrations\20210927014055_Arreglando_modelos.Designer.cs" />
+    <Compile Remove="Migrations\20210927020244_AgregandoModuloFErtilizante.cs" />
+    <Compile Remove="Migrations\20210927020244_AgregandoModuloFErtilizante.Designer.cs" />
+    <Compile Remove="Migrations\20210927020459_AgregandoModuloFErtilizante.cs" />
+    <Compile Remove="Migrations\20210927020459_AgregandoModuloFErtilizante.Designer.cs" />
+    <Compile Remove="Migrations\20210927021255_AgregandoModuloFertilizante.cs" />
+    <Compile Remove="Migrations\20210927021255_AgregandoModuloFertilizante.Designer.cs" />
+    <Compile Remove="Migrations\20210927021938_AgregandoModuloFertilizante.cs" />
+    <Compile Remove="Migrations\20210927021938_AgregandoModuloFertilizante.Designer.cs" />
+    <Compile Remove="Migrations\20210927044714_AgregandoModuloFertilizante.cs" />
+    <Compile Remove="Migrations\20210927044714_AgregandoModuloFertilizante.Designer.cs" />
+    <Compile Remove="Migrations\20210927050002_AgregandoModuloFertilizante.cs" />
+    <Compile Remove="Migrations\20210927050002_AgregandoModuloFertilizante.Designer.cs" />
+    <Compile Remove="Migrations\20220507072236_FirstMigrati.cs" />
+    <Compile Remove="Migrations\20220507072236_FirstMigrati.Designer.cs" />
+    <Compile Remove="Migrations\20220508181910_fixCatalogo.cs" />
+    <Compile Remove="Migrations\20220508181910_fixCatalogo.Designer.cs" />
+    <Compile Remove="Migrations\20220508201920_fixCatalogos.cs" />
+    <Compile Remove="Migrations\20220508201920_fixCatalogos.Designer.cs" />
+    <Compile Remove="Migrations\20220508222633_FirstMigrations.cs" />
+    <Compile Remove="Migrations\20220508222633_FirstMigrations.Designer.cs" />
+    <Compile Remove="Migrations\20220816052823_changeId.cs" />
+    <Compile Remove="Migrations\20220816052823_changeId.Designer.cs" />
+    <Compile Remove="Migrations\20220816072752_changeEstadoSefin.cs" />
+    <Compile Remove="Migrations\20220816072752_changeEstadoSefin.Designer.cs" />
+    <Compile Remove="Migrations\20220816072833_changeEstadoSefin.cs" />
+    <Compile Remove="Migrations\20220816072833_changeEstadoSefin.Designer.cs" />
+    <Compile Remove="Migrations\20230901234658_AddingDiscountRecibo.cs" />
+    <Compile Remove="Migrations\20230901234658_AddingDiscountRecibo.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Recursos\firmaDigital.jpg" />
+    <None Remove="Recursos\senasa.jpg" />
+    <None Remove="Recursos\logoSenasa.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Recursos\firmaDigital.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recursos\senasa.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recursos\logoSenasa.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Ardalis.Specification.EntityFrameworkCore" Version="4.1.0" />
+    <PackageReference Include="FluentMigrator" Version="3.3.1" />
+    <PackageReference Include="FluentMigrator.Extensions.SqlServer" Version="3.3.1" />
+    <PackageReference Include="Google.Protobuf" Version="3.21.7" />
+    <PackageReference Include="Grpc.Net.Client" Version="2.49.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.49.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="iTextSharp.LGPLv2.Core" Version="1.6.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="QRCoder" Version="1.3.6" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.5.0" />
+    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.0.23" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aplicacion\Aplicacion.csproj" />
+    <ProjectReference Include="..\Dominio\Dominio.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Protobuf Include="Protos\sefin.proto" GrpcServices="Client" />
+  </ItemGroup>
+
+</Project>

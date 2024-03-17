@@ -1,0 +1,19 @@
+version: '3'
+services:  
+  backend:
+    image: pagos-backend
+    build:
+      context: .
+      dockerfile: src/WebApi/DockerfileProd
+    ports:
+        - 8082:80
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Development
+        - TZ=America/Tegucigalpa
+    networks: 
+     - backend_network
+
+networks:
+  backend_network:
+    name: backend_network
+    driver: bridge

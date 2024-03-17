@@ -1,0 +1,96 @@
+syntax = "proto3";
+
+option java_package = "hn.gob.senasa.sefin_rpc";
+option java_outer_classname = "SefinProto";
+
+option csharp_namespace = "SefinProto";
+
+package hn.gob.senasa.sefin_rpc;
+
+//--------------- Service Definitions ---------------//
+service SefinServer {
+  rpc GetRecibos(GetRecibosRequest) returns (GetRecibosResponse) {}
+  rpc GetRecibo(GetReciboRequest) returns (GetReciboResponse) {}
+  rpc ProcessRecibo(ProcessReciboRequest) returns (ProcessReciboResponse) {}
+  rpc InsertRecibo(InsertReciboRequest) returns (InsertReciboResponse) {}
+}
+
+//--------------- Request and Response Definitions ---------------//
+message GetRecibosRequest {
+  DateProto start = 1;
+  DateProto end = 2;
+  optional uint32 pageSize = 3;
+  optional uint32 pageNumber = 4;
+  optional string orderBy = 5;
+  optional string order = 6;
+}
+
+message GetRecibosResponse {
+  uint32 totalPages = 1;
+  repeated ReciboProto recibos = 2;
+}
+
+message GetReciboRequest {
+  uint32 tgr = 1;
+}
+
+message GetReciboResponse {
+  ReciboProto recibo = 1;
+}
+
+message ProcessReciboRequest {
+  uint32 tgr = 1;
+}
+
+message ProcessReciboResponse {
+  bool success = 1;
+}
+
+message InsertReciboRequest {
+  ReciboProto recibo = 1;
+}
+
+message InsertReciboResponse {
+  uint32 tgr = 1;
+}
+//--------------- Models Definitions ---------------//
+message PagedReciboProto {
+  uint32 totalPaginas = 1;
+  repeated ReciboProto recibos = 2;
+}
+
+message ReciboProto {
+  optional uint32 numeroRecibo = 1;
+  string tipoIdentificacion = 2;
+  string descripcionIdentificacion = 3;
+  string nombreRazon = 4;
+  string institucion = 5;
+  string descripcionInstitucion = 6;
+  double monto = 7;
+  optional string apiEstado = 8;
+  optional string apiTransaccion = 9;
+  optional string usuarioCreacion = 10;
+  optional string usuarioModificacion = 11;
+  optional DateProto fechaCreacion = 12;
+  optional DateProto fechaModificacion = 13;
+  repeated RubroProto rubros = 14;
+}
+
+message RubroProto {
+  string rubro = 1;
+  string descripcion = 2;
+  double monto = 3;
+  repeated ArticuloProto articulos = 4;
+}
+
+message ArticuloProto {
+  string articulo = 1;
+  string descripcion = 2;
+  double monto = 3;
+}
+
+message DateProto {
+  int32 year = 1;
+  int32 month = 2;
+  int32 day = 3;
+}
