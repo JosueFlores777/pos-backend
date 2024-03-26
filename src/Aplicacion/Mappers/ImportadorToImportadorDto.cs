@@ -11,7 +11,7 @@ namespace Aplicacion.Mappers
     {
         public ImportadorToImportadorDto()
         {
-            CreateMap<Importador, ImportadorDto>().ReverseMap();
+            CreateMap<Cliente, ClienteDto>().ReverseMap();
             CreateMap<Catalogo, DepartamentoDto>();
             CreateMap<Catalogo, MunicipioDto>();
             CreateMap<Catalogo, PaisDto>();

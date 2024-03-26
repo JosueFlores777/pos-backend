@@ -21,12 +21,12 @@ namespace Aplicacion.CommandHandlers
         private readonly IUsuarioRepository usuarioRepository;
         private readonly ICatalogoRepository catalogoRepository;
         private readonly IUnitOfWork unitOfWork;
-        private readonly IImportadorRepository importadorRepository;
+        private readonly IClienteRepository importadorRepository;
         private readonly ISefinClient sefinClient;
         private readonly IConfiguration configuration;
         public PostReciboWebServiceHandler(IReciboRepository reciboRepository, IConfiguration configuration, ISefinClient sefinClient, IUsuarioRepository usuarioRepository, IMapper mapper, ITokenService tokeService,
            ICatalogoRepository catalogoRepository,
-           IUnitOfWork unitOfWork, IImportadorRepository importadorRepository)
+           IUnitOfWork unitOfWork, IClienteRepository importadorRepository)
         {
             this.reciboRepository = reciboRepository;
             this.mapper = mapper;

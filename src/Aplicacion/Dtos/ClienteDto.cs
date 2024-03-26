@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Aplicacion.Dtos
 {
-    public class ImportadorDto: IResponse
+    public class ClienteDto: IResponse
     {
         public string Nombre { get; set; }
         public int NacionalidadId { get; set; }

@@ -10,7 +10,7 @@ using System.Text;
 
 namespace Infraestructura.Repositories
 {
-    public class ImportadorRepository : GenericRepository<Importador>, IImportadorRepository
+    public class ImportadorRepository : GenericRepository<Cliente>, IClienteRepository
     {
         private readonly RecibosContext dbContext;
 
@@ -19,9 +19,9 @@ namespace Infraestructura.Repositories
             this.dbContext = dbContext;
         }
 
-        public Importador GetImportadorConCatalogos(ISpecification<Importador> busqueda)
+        public Cliente GetImportadorConCatalogos(ISpecification<Cliente> busqueda)
         {
-            return dbContext.Set<Importador>().AsNoTracking().Include(c=>c.Departamento).Include(c=>c.Municipio).FirstOrDefault(busqueda.Traer());
+            return dbContext.Set<Cliente>().AsNoTracking().Include(c=>c.Departamento).Include(c=>c.Municipio).FirstOrDefault(busqueda.Traer());
         }
     }
 }

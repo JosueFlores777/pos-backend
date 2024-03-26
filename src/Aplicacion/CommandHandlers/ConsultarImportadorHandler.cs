@@ -11,10 +11,10 @@ namespace Aplicacion.CommandHandlers
 {
   public  class ConsultarImportadorHandler : AbstractHandler<ConsultarImportador>
     {
-        private readonly IImportadorRepository importadorRepository;
+        private readonly IClienteRepository importadorRepository;
         private readonly IMapper mapper;
 
-        public ConsultarImportadorHandler(IImportadorRepository importadorRepository, IMapper  mapper) {
+        public ConsultarImportadorHandler(IClienteRepository importadorRepository, IMapper  mapper) {
             this.importadorRepository = importadorRepository;
             this.mapper = mapper;
         }
@@ -22,7 +22,7 @@ namespace Aplicacion.CommandHandlers
         {
             var importador = importadorRepository.GetImportadorConCatalogos(new BuscarImportadorPorIndentificador(message.Identificador));
             
-            return mapper.Map<ImportadorDto>(importador);
+            return mapper.Map<ClienteDto>(importador);
         }
     }
 }

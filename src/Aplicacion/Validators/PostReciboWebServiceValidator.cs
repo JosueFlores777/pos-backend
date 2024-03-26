@@ -12,9 +12,9 @@ namespace Aplicacion.Validators
     public class PostReciboWebServiceValidator : Validador<PostReciboWebService>
     {
         private readonly ITokenService tokenService;
-        private readonly IImportadorRepository importRepo;
+        private readonly IClienteRepository importRepo;
         private readonly IReciboRepository reciboRepository;
-        public PostReciboWebServiceValidator(IReciboRepository reciboRepository, IAutenticationHelper autenticationHelper, ITokenService tokenService, IImportadorRepository importRepo) : base(autenticationHelper)
+        public PostReciboWebServiceValidator(IReciboRepository reciboRepository, IAutenticationHelper autenticationHelper, ITokenService tokenService, IClienteRepository importRepo) : base(autenticationHelper)
         {
 
             this.tokenService = tokenService;

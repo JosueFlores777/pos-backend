@@ -27,11 +27,11 @@ namespace Aplicacion.CommandHandlers
         private readonly ICatalogoRepository catalogoRepository;
         private readonly IUnitOfWork unitOfWork;
         private readonly IConfiguration configuration;
-        private readonly IImportadorRepository importadorRepository;
+        private readonly IClienteRepository importadorRepository;
 
         public GenerarReciboWebServiceHandler(IServicioRepository servicioRepository, IConfiguration configuration, IReciboRepository reciboRepository, IMapper mapper, ITokenService tokeService, ISefinClient sefinClient,
             ICatalogoRepository catalogoRepository,
-            IUnitOfWork unitOfWork, IImportadorRepository importadorRepository)
+            IUnitOfWork unitOfWork, IClienteRepository importadorRepository)
         {
             this.reciboRepository = reciboRepository;
             this.mapper = mapper;

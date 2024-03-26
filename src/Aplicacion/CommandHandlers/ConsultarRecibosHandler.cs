@@ -18,13 +18,13 @@ namespace Aplicacion.CommandHandlers
     {
         private readonly IReciboRepository reciboRepository;
         private readonly ITokenService tokeService;
-        private readonly IImportadorRepository importadorRepository;
+        private readonly IClienteRepository importadorRepository;
         private readonly IMapper mapper;
         private readonly IUsuarioRepository usuarioRepository;
         private readonly ISefinClient sefinClient;
         private readonly IConfiguration configuration;
         public ConsultarRecibosHandler(IReciboRepository  reciboRepository, ISefinClient sefinClient, IConfiguration configuration,
-            ITokenService tokeService, IImportadorRepository importadorRepository, IMapper mapper,IUsuarioRepository usuarioRepository) {
+            ITokenService tokeService, IClienteRepository importadorRepository, IMapper mapper,IUsuarioRepository usuarioRepository) {
             this.reciboRepository = reciboRepository;
             this.tokeService = tokeService;
             this.importadorRepository = importadorRepository;

@@ -14,9 +14,9 @@ namespace Aplicacion.Validators
     class GenerarReciboWebServiceValidator : Validador<GenerarReciboWebService>
     {
         private readonly ITokenService tokenService;
-        private readonly IImportadorRepository importRepo;
+        private readonly IClienteRepository importRepo;
 
-        public GenerarReciboWebServiceValidator(IAutenticationHelper autenticationHelper, ITokenService tokenService, IImportadorRepository importRepo) : base(autenticationHelper)
+        public GenerarReciboWebServiceValidator(IAutenticationHelper autenticationHelper, ITokenService tokenService, IClienteRepository importRepo) : base(autenticationHelper)
         {
           
             this.tokenService = tokenService;

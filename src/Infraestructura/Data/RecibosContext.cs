@@ -18,7 +18,7 @@ namespace Infraestructura.Data
             this.tokenService = tokenService;
         }
         public DbSet<Usuario> usuario { get; set; }
-        public DbSet<Importador> importador { get; set; }
+        public DbSet<Cliente> cliente { get; set; }
         public DbSet<Recibo> recibo { get; set; }
         public DbSet<CambioEstado> cambioEstado { get; set; }
         public DbSet<DetalleRecibo> detalleRecibo { get; set; }

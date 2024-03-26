@@ -14,9 +14,9 @@ namespace Aplicacion.Validators
     public class GetTokenValidator : Validador<GetToken>
     {
         private readonly ITokenService tokenService;
-        private readonly IImportadorRepository importRepo;
+        private readonly IClienteRepository importRepo;
         private readonly IUsuarioRepository user;
-        public GetTokenValidator( IUsuarioRepository user, IAutenticationHelper autenticationHelper, ITokenService tokenService, IImportadorRepository importRepo) : base(autenticationHelper)
+        public GetTokenValidator( IUsuarioRepository user, IAutenticationHelper autenticationHelper, ITokenService tokenService, IClienteRepository importRepo) : base(autenticationHelper)
         {
 
             this.tokenService = tokenService;

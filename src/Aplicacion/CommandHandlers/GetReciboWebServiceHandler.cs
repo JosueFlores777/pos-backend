@@ -24,10 +24,10 @@ namespace Aplicacion.CommandHandlers
         private readonly ISefinClient sefinClient;
         private readonly ICatalogoRepository catalogoRepository;
         private readonly IUnitOfWork unitOfWork;
-        private readonly IImportadorRepository importadorRepository;
+        private readonly IClienteRepository importadorRepository;
         public GetReciboWebServiceHandler(IReciboRepository reciboRepository, IMapper mapper, ITokenService tokeService, IConfiguration configuration,
            ICatalogoRepository catalogoRepository, ISefinClient sefinClient, 
-           IUnitOfWork unitOfWork, IImportadorRepository importadorRepository, IServicioRepository servicioRepository)
+           IUnitOfWork unitOfWork, IClienteRepository importadorRepository, IServicioRepository servicioRepository)
         {
             this.reciboRepository = reciboRepository;
             this.mapper = mapper;
