@@ -26,12 +26,12 @@ namespace Aplicacion.Dtos.Servicio
         public double? Monto { get; set; }
         public int Rubro { get; set; }
         public string Descripcion { get; set; }
-        public List<DtoRangoCobros> RangoCobros {get;set;}
+
         public DateTime? FechaRegistro { get; set; }
         public DateTime? FechaModificacion { get; set; }
         public string Tag { get; set; }
         public bool Activo { get; set; }
-        public DtoTipoCobroUnidades TipoCobroUnidades { get; set; }
+
         public int TipoCobroUnidadesId { get; set; }
         public int DepartamentoId { get; set; }
         public DtoDepartemento Departamento { get; set; }

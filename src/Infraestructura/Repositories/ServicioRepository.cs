@@ -23,7 +23,7 @@ namespace Infraestructura.Repositories
         {
           
             return dbContext
-                .Set<Servicio>().Include(c => c.RangoCobros).FirstOrDefault(c => c.Id == id);
+                .Set<Servicio>().FirstOrDefault(c => c.Id == id);
         }
     }
 }

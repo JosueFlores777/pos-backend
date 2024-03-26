@@ -17,12 +17,9 @@ namespace Aplicacion.Mappers
             CreateMap<DtoServicioCompleto, Servicio>().ReverseMap();
             CreateMap<Servicio, DtoServicioCompleto>().ReverseMap();
             CreateMap<DtoCategoria, Catalogo>().ReverseMap();
-            CreateMap<RangoCobros, DtoRangoCobros>().ReverseMap();
+
             CreateMap<DtoTipoCobro, Catalogo>().ReverseMap();
 
-            CreateMap<Catalogo, DtoTipoCobroUnidades>().ReverseMap();
-
-            CreateMap<DtoTipoCobroUnidades, Catalogo>().ReverseMap();
 
 
             CreateMap<DtoTipoServicio, Catalogo>().ReverseMap();

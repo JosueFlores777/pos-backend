@@ -30,7 +30,7 @@ namespace Dominio.Models
         public int Rubro { get; set; }
         public string Descripcion { get; set; }
         public string Tag { get; set; }
-        public List<RangoCobros> RangoCobros { get; set; }
+  
         public DateTime? FechaRegistro { get; set; }
         public DateTime? FechaModificacion { get; set; }
         public bool Descuento { get; set; }
