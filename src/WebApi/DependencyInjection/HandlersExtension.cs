@@ -12,7 +12,7 @@ namespace WebApi.DependencyInjection
         {
             services.Scan(scan => scan.FromAssemblyOf<ICommandBus>().AddClasses(classes => classes.AssignableTo<ICommandBus>()).AsImplementedInterfaces().WithTransientLifetime());
             services.Scan(scan =>
-             scan.FromAssemblyOf<ConsultarImportadorHandler>()
+             scan.FromAssemblyOf<ConsultarClienteHandler>()
               .AddClasses(classes => classes.AssignableTo(typeof(ICommandHandler<>)))
             .AsImplementedInterfaces()
             .WithTransientLifetime()

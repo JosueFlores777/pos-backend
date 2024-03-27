@@ -24,7 +24,7 @@ namespace Aplicacion.CommandHandlers
         private readonly ISefinClient sefinClient;
         private readonly ICatalogoRepository catalogoRepository;
         private readonly IUnitOfWork unitOfWork;
-        private readonly IClienteRepository importadorRepository;
+        private readonly IClienteRepository clienteRepository;
         public GetReciboWebServiceHandler(IReciboRepository reciboRepository, IMapper mapper, ITokenService tokeService, IConfiguration configuration,
            ICatalogoRepository catalogoRepository, ISefinClient sefinClient, 
            IUnitOfWork unitOfWork, IClienteRepository importadorRepository, IServicioRepository servicioRepository)
@@ -36,7 +36,7 @@ namespace Aplicacion.CommandHandlers
             this.sefinClient = sefinClient;
             this.catalogoRepository = catalogoRepository;
             this.unitOfWork = unitOfWork;
-            this.importadorRepository = importadorRepository;
+            this.clienteRepository = importadorRepository;
              
     }
         public override IResponse Handle(GetReciboWebService message)

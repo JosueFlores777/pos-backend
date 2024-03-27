@@ -11,7 +11,7 @@ namespace Dominio.Models
     {
 
         public static string correoUsuarioAdmin = "administrador@senasa.gob.hn";
-        public static string tipoImportador = "importador";
+        public static string tipoCliente = "importador";
         public static string usuarioInterno = "usuario-interno";
         public int Id { get; set; }
         public string Nombre { get; set; }

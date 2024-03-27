@@ -23,6 +23,11 @@ namespace Dominio.Models
         public string Correo { get; set; }
         public string TipoIngreso { get; set; }
         public int Id { get; set; }
+       
+        public int MarcaId { get; set; }
+        public Catalogo Marca { get; set; }
+        public int ModeloId { get; set; }
+        public Catalogo Modelo { get; set; }
         public DateTime? FechaRegistro { get; set; }
         public DateTime? FechaModificacion { get; set; }
         public bool CorreoEnviado { get; set; }

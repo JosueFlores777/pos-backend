@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Aplicacion.Commands
 {
-   public class ConsultarImportador: IMessage
+   public class ConsultarCliente: IMessage
     {
         public string Identificador { get; set; }
     }

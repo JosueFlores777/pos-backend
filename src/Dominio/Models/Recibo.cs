@@ -18,8 +18,8 @@ namespace Dominio.Models
 
         public int Id { get; set; }
         public string Identificacion { get; set; }
-        public Cliente Importador { get; set; }
-        public int? ImportadorId { get; set; }
+        public Cliente Cliente { get; set; }
+        public int? ClienteId { get; set; }
         public string NombreRazon { get; set; }
         public int TipoIdentificadorId { get; set; }
         public Catalogo TipoIdentificador { get; set; }

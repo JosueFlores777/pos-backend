@@ -10,16 +10,16 @@ using System.Text;
 
 namespace Infraestructura.Repositories
 {
-    public class ImportadorRepository : GenericRepository<Cliente>, IClienteRepository
+    public class ClienteRepository : GenericRepository<Cliente>, IClienteRepository
     {
         private readonly RecibosContext dbContext;
 
-        public ImportadorRepository(RecibosContext dbContext) : base(dbContext)
+        public ClienteRepository(RecibosContext dbContext) : base(dbContext)
         {
             this.dbContext = dbContext;
         }
 
-        public Cliente GetImportadorConCatalogos(ISpecification<Cliente> busqueda)
+        public Cliente GetClienteConCatalogo(ISpecification<Cliente> busqueda)
         {
             return dbContext.Set<Cliente>().AsNoTracking().Include(c=>c.Departamento).Include(c=>c.Municipio).FirstOrDefault(busqueda.Traer());
         }

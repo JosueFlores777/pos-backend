@@ -43,7 +43,7 @@ namespace Infraestructura.Service.Correo
             System.Net.Mail.Attachment attach = new Attachment(myfile, ct);
             attach.ContentDisposition.FileName = "Recibo.pdf";
 
-            mailBuilder.Enviar("Notificación", recibo.Importador.Correo, alternative, new List<Attachment> { attach });
+            mailBuilder.Enviar("Notificación", recibo.Cliente.Correo, alternative, new List<Attachment> { attach });
             
             myfile.Close();
         }

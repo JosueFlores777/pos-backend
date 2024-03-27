@@ -7,9 +7,9 @@ using System.Text;
 
 namespace Aplicacion.Validators
 {
-    class ConsultarImportadorValidator : Validador<ConsultarImportador>
+    class ConsultarClienteValidator : Validador<ConsultarCliente>
     {
-        public ConsultarImportadorValidator(IAutenticationHelper autenticationHelper) : base(autenticationHelper)
+        public ConsultarClienteValidator(IAutenticationHelper autenticationHelper) : base(autenticationHelper)
         {
             RuleFor(x => x.Identificador).NotEmpty();
         }

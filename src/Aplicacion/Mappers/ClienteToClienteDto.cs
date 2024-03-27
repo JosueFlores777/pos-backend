@@ -7,9 +7,9 @@ using System.Text;
 
 namespace Aplicacion.Mappers
 {
-    public class ImportadorToImportadorDto : Profile
+    public class ClienteToClienteDto : Profile
     {
-        public ImportadorToImportadorDto()
+        public ClienteToClienteDto()
         {
             CreateMap<Cliente, ClienteDto>().ReverseMap();
             CreateMap<Catalogo, DepartamentoDto>();

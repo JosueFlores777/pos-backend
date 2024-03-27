@@ -29,8 +29,8 @@ namespace Aplicacion.Dtos
         public DescuentoDto Descuento { get; set; }
         public int? DescuentoId { get; set; }
         public int AreaId { get; set; }
-        public ClienteDto Importador { get; set; }
-        public int ImportadorId { get; set; }
+        public ClienteDto Cliente { get; set; }
+        public int ClienteId { get; set; }
 
         public bool RegionalBool { get; set; }
 

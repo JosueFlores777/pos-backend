@@ -70,6 +70,8 @@
     <Compile Remove="Migrations\20220816072833_changeEstadoSefin.Designer.cs" />
     <Compile Remove="Migrations\20230901234658_AddingDiscountRecibo.cs" />
     <Compile Remove="Migrations\20230901234658_AddingDiscountRecibo.Designer.cs" />
+    <Compile Remove="Migrations\20240327140831_addCarBrandRecibo.cs" />
+    <Compile Remove="Migrations\20240327140831_addCarBrandRecibo.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>

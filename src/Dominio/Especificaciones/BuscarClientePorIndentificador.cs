@@ -5,11 +5,11 @@ using System.Text;
 
 namespace Dominio.Especificaciones
 {
-    public class BuscarImportadorAprobado : ISpecification<Cliente>
+    public class BuscarClientePorIndentificador : ISpecification<Cliente>
     {
         private readonly string identificador;
 
-        public BuscarImportadorAprobado(string Identificador)
+        public BuscarClientePorIndentificador(string Identificador)
         {
             identificador = Identificador;
         }
@@ -17,7 +17,7 @@ namespace Dominio.Especificaciones
 
         Func<Cliente, bool> ISpecification<Cliente>.Traer()
         {
-            return new Func<Cliente, bool>(c => c.Identificador.Trim() == identificador.Trim() && c.AccesoAprobado==true);
+            return new Func<Cliente, bool>(c => c.Identificador.Trim() == identificador.Trim() /*&& c.AccesoAprobado==true*/);
         }
     }
 }

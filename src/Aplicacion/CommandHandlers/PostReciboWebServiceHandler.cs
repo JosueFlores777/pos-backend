@@ -21,7 +21,7 @@ namespace Aplicacion.CommandHandlers
         private readonly IUsuarioRepository usuarioRepository;
         private readonly ICatalogoRepository catalogoRepository;
         private readonly IUnitOfWork unitOfWork;
-        private readonly IClienteRepository importadorRepository;
+        private readonly IClienteRepository clienteRepository;
         private readonly ISefinClient sefinClient;
         private readonly IConfiguration configuration;
         public PostReciboWebServiceHandler(IReciboRepository reciboRepository, IConfiguration configuration, ISefinClient sefinClient, IUsuarioRepository usuarioRepository, IMapper mapper, ITokenService tokeService,
@@ -35,7 +35,7 @@ namespace Aplicacion.CommandHandlers
             this.usuarioRepository = usuarioRepository;
             this.catalogoRepository = catalogoRepository;
             this.unitOfWork = unitOfWork;
-            this.importadorRepository = importadorRepository;
+            this.clienteRepository = importadorRepository;
             this.configuration = configuration;
         }
         public override IResponse Handle(PostReciboWebService message)

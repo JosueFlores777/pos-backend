@@ -4,14 +4,16 @@ using Infraestructura.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infraestructura.Migrations
 {
     [DbContext(typeof(RecibosContext))]
-    partial class AutenticationContextModelSnapshot : ModelSnapshot
+    [Migration("20240327134935_addCarBrand")]
+    partial class addCarBrand
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -171,12 +173,6 @@ namespace Infraestructura.Migrations
                     b.Property<int?>("CantidadServicio")
                         .HasColumnType("int");
 
-                    b.Property<int>("MarcaId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ModeloId")
-                        .HasColumnType("int");
-
                     b.Property<double>("Monto")
                         .HasColumnType("float");
 
@@ -187,10 +183,6 @@ namespace Infraestructura.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MarcaId");
-
-                    b.HasIndex("ModeloId");
 
                     b.HasIndex("ReciboId");
 
@@ -627,18 +619,6 @@ namespace Infraestructura.Migrations
 
             modelBuilder.Entity("Dominio.Models.DetalleRecibo", b =>
                 {
-                    b.HasOne("Dominio.Models.Catalogo", "Marca")
-                        .WithMany()
-                        .HasForeignKey("MarcaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Dominio.Models.Catalogo", "Modelo")
-                        .WithMany()
-                        .HasForeignKey("ModeloId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Dominio.Models.Recibo", null)
                         .WithMany("DetalleRecibos")
                         .HasForeignKey("ReciboId")

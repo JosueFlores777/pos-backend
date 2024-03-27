@@ -24,7 +24,7 @@ namespace Aplicacion.CommandHandlers
         private readonly ISefinClient sefinClient;
         private readonly ICatalogoRepository catalogoRepository;
         private readonly IUnitOfWork unitOfWork;
-        private readonly IClienteRepository importadorRepository;
+        private readonly IClienteRepository clienteRepository;
         private readonly IConfiguration configuration;
         public CrearReciboHandler(IServicioRepository servicioRepository, IConfiguration configuration, IReciboRepository reciboRepository, IMapper mapper, ITokenService tokeService, ISefinClient sefinClient,
             ICatalogoRepository catalogoRepository, 
@@ -36,7 +36,7 @@ namespace Aplicacion.CommandHandlers
             this.sefinClient = sefinClient;
             this.catalogoRepository = catalogoRepository;
             this.unitOfWork = unitOfWork;
-            this.importadorRepository = importadorRepository;
+            this.clienteRepository = importadorRepository;
             this.servicioRepository = servicioRepository;
             this.configuration = configuration;
         }
@@ -51,14 +51,14 @@ namespace Aplicacion.CommandHandlers
 
                 var recibo = mapper.Map<Recibo>(message.Recibo);
                 
-                var importador = importadorRepository.Filter(new BuscarImportadorAprobado(message.Recibo.Identificacion)).FirstOrDefault();
+                var importador = clienteRepository.Filter(new BuscarClienteAprobado(message.Recibo.Identificacion)).FirstOrDefault();
                 if ( importador != null)
                 {
                     recibo.NombreRazon = importador.Nombre;
-                    recibo.ImportadorId = importador.Id;
+                    recibo.ClienteId = importador.Id;
 
                 } else {
-                    recibo.ImportadorId = 0;
+                    recibo.ClienteId = 0;
                 }
                 if (ambiente.Equals("production"))
                 {

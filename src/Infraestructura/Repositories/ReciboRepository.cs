@@ -36,7 +36,7 @@ namespace Infraestructura.Repositories
         public IPagina<Recibo> Filter(IConsulta ownerParameters, string especificaciones)
         {
             var queriable = dbContext.Set<Recibo>().OrderByDescending(c => c.FechaCreacion).Include(c => c.Cambios).OrderByDescending(c => c.Id)
-                  .Include(c => c.Importador).Include(c => c.EstadoSenasa).Include(c=> c.UsuarioAsignado).Include(c=>c.DetalleRecibos)
+                  .Include(c => c.Cliente).Include(c => c.EstadoSenasa).Include(c=> c.UsuarioAsignado).Include(c=>c.DetalleRecibos)
                   .Where(especificaciones);
 
             return PagedList<Recibo>.ToPagedList(queriable,
@@ -55,7 +55,7 @@ namespace Infraestructura.Repositories
         public Recibo ReciboConDetalle(int id)
         {
             var resultado =dbContext.Set<Recibo>()
-                .Include(c => c.Importador)
+                .Include(c => c.Cliente)
                 .Include(c => c.Cambios).Include(c => c.UsuarioAsignado)
                 .Where(c => c.Id == id).FirstOrDefault();
             var detalleRecibos = dbContext.Set<DetalleRecibo>().Where(c => c.ReciboId == id).Include(c=>c.Servicio).ToList();
@@ -67,7 +67,7 @@ namespace Infraestructura.Repositories
         public Recibo ReciboConDetalleParaPdf(int id)
         {
             return dbContext.Set<Recibo>()
-                  .Include(c => c.Importador).Include(c => c.EstadoSenasa)
+                  .Include(c => c.Cliente).Include(c => c.EstadoSenasa)
                   .Include(c => c.Cambios)
                   .Include(c => c.UsuarioAsignado)
                   .Where(c => c.Id == id).FirstOrDefault();

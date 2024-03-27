@@ -27,7 +27,7 @@ namespace Aplicacion.CommandHandlers
         private readonly ICatalogoRepository catalogoRepository;
         private readonly IUnitOfWork unitOfWork;
         private readonly IConfiguration configuration;
-        private readonly IClienteRepository importadorRepository;
+        private readonly IClienteRepository clienteRepository;
 
         public GenerarReciboWebServiceHandler(IServicioRepository servicioRepository, IConfiguration configuration, IReciboRepository reciboRepository, IMapper mapper, ITokenService tokeService, ISefinClient sefinClient,
             ICatalogoRepository catalogoRepository,
@@ -39,7 +39,7 @@ namespace Aplicacion.CommandHandlers
             this.sefinClient = sefinClient;
             this.catalogoRepository = catalogoRepository;
             this.unitOfWork = unitOfWork;
-            this.importadorRepository = importadorRepository;
+            this.clienteRepository = importadorRepository;
             this.servicioRepository = servicioRepository;
             this.configuration = configuration;
         }
@@ -60,16 +60,16 @@ namespace Aplicacion.CommandHandlers
                 Recibo recibo = new Recibo();
 
 
-                var importador = importadorRepository.Filter(new BuscarImportadorPorIndentificador(message.Recibo.Identificacion)).FirstOrDefault();
+                var importador = clienteRepository.Filter(new BuscarClientePorIndentificador(message.Recibo.Identificacion)).FirstOrDefault();
                 if (importador != null)
                 {
                     recibo.NombreRazon = importador.Nombre;
-                    recibo.ImportadorId = importador.Id;
+                    recibo.ClienteId = importador.Id;
 
                 }
                 else
                 {
-                    recibo.ImportadorId = 0;
+                    recibo.ClienteId = 0;
                     recibo.NombreRazon = message.Recibo.NombreRazon;
                 }
 

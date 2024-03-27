@@ -18,7 +18,7 @@ namespace Aplicacion.CommandHandlers
     {
         private readonly IReciboRepository reciboRepository;
         private readonly ITokenService tokeService;
-        private readonly IClienteRepository importadorRepository;
+        private readonly IClienteRepository clienteRepository;
         private readonly IMapper mapper;
         private readonly IUsuarioRepository usuarioRepository;
         private readonly ISefinClient sefinClient;
@@ -26,7 +26,7 @@ namespace Aplicacion.CommandHandlers
             ITokenService tokeService, IClienteRepository importadorRepository, IMapper mapper,IUsuarioRepository usuarioRepository) {
             this.reciboRepository = reciboRepository;
             this.tokeService = tokeService;
-            this.importadorRepository = importadorRepository;
+            this.clienteRepository = importadorRepository;
             this.mapper = mapper;
             this.sefinClient = sefinClient;
             this.usuarioRepository = usuarioRepository;
@@ -41,8 +41,8 @@ namespace Aplicacion.CommandHandlers
             fecha2 = fecha2.Date.AddHours(23).AddMinutes(59).AddSeconds(59).AddMilliseconds(59);
             var include = new Includes<Dominio.Models.Recibo>(new[] { "DetalleRecibos", "DetalleRecibos.Servicio" });
 
-            if (usuario.TipoUsuario == Usuario.tipoImportador) {
-                var importador = importadorRepository.GetByIdEspecificacion(new BuscarImportadorPorIndentificador(tokeService.GetIdentificacionUsuario()));
+            if (usuario.TipoUsuario == Usuario.tipoCliente) {
+                var importador = clienteRepository.GetByIdEspecificacion(new BuscarClientePorIndentificador(tokeService.GetIdentificacionUsuario()));
                 idImportador =  importador.Id;
             }
             if (message.Reporte)

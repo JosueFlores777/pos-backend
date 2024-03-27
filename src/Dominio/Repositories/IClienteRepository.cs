@@ -6,6 +6,6 @@ namespace Dominio.Repositories
 {
     public interface IClienteRepository : IGenericRepository<Cliente>
     {
-        Cliente GetImportadorConCatalogos(ISpecification<Cliente> busqueda);
+        Cliente GetClienteConCatalogo(ISpecification<Cliente> busqueda);
     }
 }

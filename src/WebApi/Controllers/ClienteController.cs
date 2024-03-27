@@ -12,11 +12,11 @@ namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ImportadorController : ControllerBase
+    public class ClienteController : ControllerBase
     {
         public ICommandBus CommandBus { get; }
 
-        public ImportadorController(ICommandBus commandBus)
+        public ClienteController(ICommandBus commandBus)
         {
             CommandBus = commandBus;
         }
@@ -27,7 +27,7 @@ namespace WebApi.Controllers
         public IResponse Get(string id)
         {
             
-            return CommandBus.execute(new ConsultarImportador { Identificador = id });
+            return CommandBus.execute(new ConsultarCliente { Identificador = id });
         }
 
 
