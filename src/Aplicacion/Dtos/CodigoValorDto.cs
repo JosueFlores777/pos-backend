@@ -12,6 +12,13 @@ namespace Aplicacion.Dtos
     { 
     }
 
+    public class MarcaDto : CodigoValorDto { 
+    }
+    
+    public class ModeloDto : CodigoValorDto
+    {
+    }
+
     public class MunicipioDto : CodigoValorDto
     {
     }

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Aplicacion.Dtos
 {
-    public class ClienteDto: IResponse
+    public class ClienteDto : IResponse
     {
         public string Nombre { get; set; }
         public int NacionalidadId { get; set; }
@@ -12,6 +12,10 @@ namespace Aplicacion.Dtos
         public string Identificador { get; set; }
         public string Telefono { get; set; }
         public string Direccion { get; set; }
+        public int ModeloId { get; set; }
+        public ModeloDto Modelo { get; set; }
+        public int MarcaId { get; set; }
+        public MarcaDto Marca { get; set; }
 
         public int DepartamentoId { get; set; }
         public DepartamentoDto Departamento { get; set; }
