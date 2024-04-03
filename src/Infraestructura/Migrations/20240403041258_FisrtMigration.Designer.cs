@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infraestructura.Migrations
 {
     [DbContext(typeof(RecibosContext))]
-    [Migration("20240326022147_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20240403041258_FisrtMigration")]
+    partial class FisrtMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -90,35 +90,7 @@ namespace Infraestructura.Migrations
                     b.ToTable("Catalogo");
                 });
 
-            modelBuilder.Entity("Dominio.Models.DetalleRecibo", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("CantidadServicio")
-                        .HasColumnType("int");
-
-                    b.Property<double>("Monto")
-                        .HasColumnType("float");
-
-                    b.Property<int>("ReciboId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ServicioId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ReciboId");
-
-                    b.HasIndex("ServicioId");
-
-                    b.ToTable("detalleRecibo");
-                });
-
-            modelBuilder.Entity("Dominio.Models.Importador", b =>
+            modelBuilder.Entity("Dominio.Models.Cliente", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -137,11 +109,17 @@ namespace Infraestructura.Migrations
                     b.Property<bool>("CorreoEnviado")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("CorreoVerificado")
+                        .HasColumnType("bit");
+
                     b.Property<int>("DepartamentoId")
                         .HasColumnType("int");
 
                     b.Property<string>("Direccion")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("FechaAprobacionAcceso")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaEnvioCorreo")
                         .HasColumnType("datetime2");
@@ -152,7 +130,19 @@ namespace Infraestructura.Migrations
                     b.Property<DateTime?>("FechaRegistro")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime?>("FechaVerificacionCorreo")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Identificador")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("MarcaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ModeloId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MotivoRechazo")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("MunicipioId")
@@ -167,18 +157,78 @@ namespace Infraestructura.Migrations
                     b.Property<string>("Telefono")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("TipoIdentificadorId")
+                        .HasColumnType("int");
+
                     b.Property<string>("TipoIngreso")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TipoPersonaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TokenVerificacion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("UsuarioGentionId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("DepartamentoId");
 
+                    b.HasIndex("MarcaId");
+
+                    b.HasIndex("ModeloId");
+
                     b.HasIndex("MunicipioId");
 
                     b.HasIndex("NacionalidadId");
 
-                    b.ToTable("importador");
+                    b.HasIndex("TipoIdentificadorId");
+
+                    b.HasIndex("TipoPersonaId");
+
+                    b.HasIndex("UsuarioGentionId");
+
+                    b.ToTable("cliente");
+                });
+
+            modelBuilder.Entity("Dominio.Models.DetalleRecibo", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CantidadServicio")
+                        .HasColumnType("int");
+
+                    b.Property<int>("MarcaId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ModeloId")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Monto")
+                        .HasColumnType("float");
+
+                    b.Property<int>("ReciboId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ServicioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MarcaId");
+
+                    b.HasIndex("ModeloId");
+
+                    b.HasIndex("ReciboId");
+
+                    b.HasIndex("ServicioId");
+
+                    b.ToTable("detalleRecibo");
                 });
 
             modelBuilder.Entity("Dominio.Models.Permiso", b =>
@@ -220,50 +270,6 @@ namespace Infraestructura.Migrations
                     b.ToTable("Permiso");
                 });
 
-            modelBuilder.Entity("Dominio.Models.RangoCobros", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("BasePeso")
-                        .HasColumnType("int");
-
-                    b.Property<double?>("BaseTarifa")
-                        .HasColumnType("float");
-
-                    b.Property<bool>("Excedente")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("FechaModificacion")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("FechaRegistro")
-                        .HasColumnType("datetime2");
-
-                    b.Property<double?>("Monto")
-                        .HasColumnType("float");
-
-                    b.Property<int?>("PorCada")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ServicioId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ValorMaximo")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ValorMinimo")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ServicioId");
-
-                    b.ToTable("RangoCobros");
-                });
-
             modelBuilder.Entity("Dominio.Models.Recibo", b =>
                 {
                     b.Property<int>("Id")
@@ -276,6 +282,9 @@ namespace Infraestructura.Migrations
 
                     b.Property<string>("Banco")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ClienteId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Comentario")
                         .HasColumnType("nvarchar(max)");
@@ -307,9 +316,6 @@ namespace Infraestructura.Migrations
                     b.Property<string>("Identificacion")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ImportadorId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("InicioVigencia")
                         .HasColumnType("datetime2");
 
@@ -338,13 +344,13 @@ namespace Infraestructura.Migrations
 
                     b.HasIndex("AreaId");
 
+                    b.HasIndex("ClienteId");
+
                     b.HasIndex("DescuentoId");
 
                     b.HasIndex("EstadoSefinId");
 
                     b.HasIndex("EstadoSenasaId");
-
-                    b.HasIndex("ImportadorId");
 
                     b.HasIndex("MonedaId");
 
@@ -618,26 +624,23 @@ namespace Infraestructura.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Dominio.Models.DetalleRecibo", b =>
-                {
-                    b.HasOne("Dominio.Models.Recibo", null)
-                        .WithMany("DetalleRecibos")
-                        .HasForeignKey("ReciboId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Dominio.Models.Servicio", "Servicio")
-                        .WithMany()
-                        .HasForeignKey("ServicioId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Dominio.Models.Importador", b =>
+            modelBuilder.Entity("Dominio.Models.Cliente", b =>
                 {
                     b.HasOne("Dominio.Models.Catalogo", "Departamento")
                         .WithMany()
                         .HasForeignKey("DepartamentoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Dominio.Models.Catalogo", "Marca")
+                        .WithMany()
+                        .HasForeignKey("MarcaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Dominio.Models.Catalogo", "Modelo")
+                        .WithMany()
+                        .HasForeignKey("ModeloId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -652,12 +655,46 @@ namespace Infraestructura.Migrations
                         .HasForeignKey("NacionalidadId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Dominio.Models.Catalogo", "TipoIdentificador")
+                        .WithMany()
+                        .HasForeignKey("TipoIdentificadorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Dominio.Models.Catalogo", "TipoPersona")
+                        .WithMany()
+                        .HasForeignKey("TipoPersonaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Dominio.Models.Usuario", "UsuarioGention")
+                        .WithMany()
+                        .HasForeignKey("UsuarioGentionId");
                 });
 
-            modelBuilder.Entity("Dominio.Models.RangoCobros", b =>
+            modelBuilder.Entity("Dominio.Models.DetalleRecibo", b =>
                 {
+                    b.HasOne("Dominio.Models.Catalogo", "Marca")
+                        .WithMany()
+                        .HasForeignKey("MarcaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Dominio.Models.Catalogo", "Modelo")
+                        .WithMany()
+                        .HasForeignKey("ModeloId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Dominio.Models.Recibo", null)
+                        .WithMany("DetalleRecibos")
+                        .HasForeignKey("ReciboId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Dominio.Models.Servicio", "Servicio")
-                        .WithMany("RangoCobros")
+                        .WithMany()
                         .HasForeignKey("ServicioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -670,6 +707,10 @@ namespace Infraestructura.Migrations
                         .HasForeignKey("AreaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Dominio.Models.Cliente", "Cliente")
+                        .WithMany()
+                        .HasForeignKey("ClienteId");
 
                     b.HasOne("Dominio.Models.Catalogo", "Descuento")
                         .WithMany()
@@ -686,10 +727,6 @@ namespace Infraestructura.Migrations
                         .HasForeignKey("EstadoSenasaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("Dominio.Models.Importador", "Importador")
-                        .WithMany()
-                        .HasForeignKey("ImportadorId");
 
                     b.HasOne("Dominio.Models.Catalogo", "Moneda")
                         .WithMany()

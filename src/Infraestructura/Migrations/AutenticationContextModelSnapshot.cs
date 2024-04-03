@@ -107,11 +107,17 @@ namespace Infraestructura.Migrations
                     b.Property<bool>("CorreoEnviado")
                         .HasColumnType("bit");
 
+                    b.Property<bool>("CorreoVerificado")
+                        .HasColumnType("bit");
+
                     b.Property<int>("DepartamentoId")
                         .HasColumnType("int");
 
                     b.Property<string>("Direccion")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("FechaAprobacionAcceso")
+                        .HasColumnType("datetime2");
 
                     b.Property<DateTime?>("FechaEnvioCorreo")
                         .HasColumnType("datetime2");
@@ -122,6 +128,9 @@ namespace Infraestructura.Migrations
                     b.Property<DateTime?>("FechaRegistro")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime?>("FechaVerificacionCorreo")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Identificador")
                         .HasColumnType("nvarchar(max)");
 
@@ -130,6 +139,9 @@ namespace Infraestructura.Migrations
 
                     b.Property<int>("ModeloId")
                         .HasColumnType("int");
+
+                    b.Property<string>("MotivoRechazo")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("MunicipioId")
                         .HasColumnType("int");
@@ -143,8 +155,20 @@ namespace Infraestructura.Migrations
                     b.Property<string>("Telefono")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("TipoIdentificadorId")
+                        .HasColumnType("int");
+
                     b.Property<string>("TipoIngreso")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("TipoPersonaId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TokenVerificacion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("UsuarioGentionId")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -157,6 +181,12 @@ namespace Infraestructura.Migrations
                     b.HasIndex("MunicipioId");
 
                     b.HasIndex("NacionalidadId");
+
+                    b.HasIndex("TipoIdentificadorId");
+
+                    b.HasIndex("TipoPersonaId");
+
+                    b.HasIndex("UsuarioGentionId");
 
                     b.ToTable("cliente");
                 });
@@ -623,6 +653,22 @@ namespace Infraestructura.Migrations
                         .HasForeignKey("NacionalidadId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("Dominio.Models.Catalogo", "TipoIdentificador")
+                        .WithMany()
+                        .HasForeignKey("TipoIdentificadorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Dominio.Models.Catalogo", "TipoPersona")
+                        .WithMany()
+                        .HasForeignKey("TipoPersonaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Dominio.Models.Usuario", "UsuarioGention")
+                        .WithMany()
+                        .HasForeignKey("UsuarioGentionId");
                 });
 
             modelBuilder.Entity("Dominio.Models.DetalleRecibo", b =>
