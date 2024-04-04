@@ -26,14 +26,20 @@ namespace Aplicacion.Dtos
         public RegionalDto Regional { get; set; }
         public int? RegionalId { get; set; }
 
+
+        public MarcaDto Marca { get; set; }
+        public int? MarcaId { get; set; }
+
+
+        public ModeloDto Modelo { get; set; }
+        public int? ModeloId { get; set; }
+
         public DescuentoDto Descuento { get; set; }
         public int? DescuentoId { get; set; }
         public int AreaId { get; set; }
         public ClienteDto Cliente { get; set; }
         public int ClienteId { get; set; }
-
         public bool RegionalBool { get; set; }
-
         public int? UsuarioAsignadoId { get; set; }
         public DtoUsuario UsuarioAsignado { get; set; }
         //

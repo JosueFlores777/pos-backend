@@ -44,13 +44,12 @@ namespace Aplicacion.CommandHandlers
         public override IResponse Handle(CrearRecibo message)
         {
             var context = unitOfWork.GetContext();
-            Random rnd = new Random();
-            var ambiente = configuration.GetValue<string>("AppSettings:Environment");
+
             using (var transaction = context.Database.BeginTransaction())
             {
 
                 var recibo = mapper.Map<Recibo>(message.Recibo);
-                
+                var userId = 1;
                 var importador = clienteRepository.Filter(new BuscarClienteAprobado(message.Recibo.Identificacion)).FirstOrDefault();
                 if ( importador != null)
                 {
@@ -60,14 +59,6 @@ namespace Aplicacion.CommandHandlers
                 } else {
                     recibo.ClienteId = 0;
                 }
-                if (ambiente.Equals("production"))
-                {
-                    recibo.Id = (int)CrearReciboSefin(message.Recibo);
-                }
-                else {
-                    recibo.Id = rnd.Next(108900, 118900);
-                }
-                    
                 var areaId = 0;
                 foreach (var item in recibo.DetalleRecibos)
                 {
@@ -78,7 +69,7 @@ namespace Aplicacion.CommandHandlers
 
                 recibo.RegionalId= message.Recibo.RegionalId == 0 ? null : message.Recibo.RegionalId;
                 recibo.DescuentoId = message.Recibo.DescuentoId == 0 ? null : message.Recibo.DescuentoId;
-                recibo.Inicializar();
+                recibo.Inicializar(userId);
                 reciboRepository.Create(recibo);
                 context.SaveChanges();
                 transaction.Commit();

@@ -48,11 +48,17 @@ namespace Dominio.Models
         public DateTime? FinVigencia { get; set; }
         public string Banco { get; set; }
 
+        public Catalogo Marca { get; set; }
+        public int MarcaId { get; set; }
+
+        public int ModeloId { get; set; }
+        public Catalogo Modelo { get; set; }
+
 
         public ICollection<CambioEstado> Cambios { get; set; }
         //DetalleRecibo
         public List<DetalleRecibo> DetalleRecibos { get; set; }
-        public void Inicializar()
+        public void Inicializar(int idUsuario)
         {
             LastSync = DateTime.Now;
             this.FechaCreacion = DateTime.Now;
@@ -61,7 +67,7 @@ namespace Dominio.Models
                     EstadoId=EstadoReciboCreado,
                     Fecha=this.FechaCreacion,
                     ReciboId=this.Id,
-                    UsuarioId = 5,
+                    UsuarioId = idUsuario,
                 } 
             };
             this.EstadoSenasaId = EstadoReciboCreado;
