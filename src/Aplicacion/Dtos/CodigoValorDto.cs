@@ -44,4 +44,10 @@ namespace Aplicacion.Dtos
     public class DescuentoDto : CodigoValorDto
     {
     }
+    public class MarcalDto : CodigoValorDto
+    {
+    }
+    public class ModelolDto : CodigoValorDto
+    {
+    }
 }

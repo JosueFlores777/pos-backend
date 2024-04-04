@@ -50,6 +50,7 @@ namespace Aplicacion.CommandHandlers
             var ambiente = configuration.GetValue<string>("AppSettings:Environment");
             using (var transaction = context.Database.BeginTransaction())
             {
+                var userId = 1;
                 SefinRecibo sefinRecibo2 = new SefinRecibo();
                 ResponseReciboGenerarDTO response = new ResponseReciboGenerarDTO();
                 List<SefinRecibo> listaSefin = new List<SefinRecibo>();
@@ -83,17 +84,10 @@ namespace Aplicacion.CommandHandlers
 
                 }
                 Listadetalles.Add(detalles);
-                Random rnd = new Random();
+
                 try
                 {
-                    if (ambiente.Equals("production"))
-                    {
-                        recibo.Id = (int)CrearReciboSefin(message.Recibo);
-                    }
-                    else
-                    {
-                        recibo.Id = rnd.Next(108900, 118900);
-                    }
+
                     recibo.MontoTotal = message.Recibo.MontoTotal;
 
 
@@ -106,7 +100,7 @@ namespace Aplicacion.CommandHandlers
 
                     recibo.MonedaId = 64; // to-do por servicio
                     recibo.AreaId = areaId;
-                    recibo.Inicializar();
+                    recibo.Inicializar(userId);
                     reciboRepository.Create(recibo);
                     context.SaveChanges();
                     transaction.Commit();

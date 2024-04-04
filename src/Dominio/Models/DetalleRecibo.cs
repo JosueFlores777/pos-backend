@@ -13,12 +13,6 @@ namespace Dominio.Models
         public int ServicioId { get; set; }
         public Servicio Servicio { get; set; }
 
-        public Catalogo Marca { get; set; }
-        public int MarcaId { get; set; }
-
-        public int ModeloId { get; set; }
-        public Catalogo Modelo {get; set;}
-
         public int? CantidadServicio { get; set; }
         public double Monto { get; set; }
     }
