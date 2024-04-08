@@ -51,32 +51,28 @@ namespace Infraestructura.Migrations
                         name: "FK_Servicio_Catalogo_CategoriaId",
                         column: x => x.CategoriaId,
                         principalTable: "Catalogo",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Servicio_Catalogo_DepartamentoId",
                         column: x => x.DepartamentoId,
                         principalTable: "Catalogo",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id"
+                       );
                     table.ForeignKey(
                         name: "FK_Servicio_Catalogo_MonedaId",
                         column: x => x.MonedaId,
                         principalTable: "Catalogo",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Servicio_Catalogo_TipoCobroId",
                         column: x => x.TipoCobroId,
                         principalTable: "Catalogo",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Servicio_Catalogo_TipoServicioId",
                         column: x => x.TipoServicioId,
                         principalTable: "Catalogo",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -132,20 +128,17 @@ namespace Infraestructura.Migrations
                         name: "FK_recibo_Catalogo_EstadoSefinId",
                         column: x => x.EstadoSefinId,
                         principalTable: "Catalogo",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_recibo_Catalogo_EstadoSenasaId",
                         column: x => x.EstadoSenasaId,
                         principalTable: "Catalogo",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_recibo_Catalogo_MonedaId",
                         column: x => x.MonedaId,
                         principalTable: "Catalogo",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_recibo_Catalogo_RegionalId",
                         column: x => x.RegionalId,
@@ -156,14 +149,12 @@ namespace Infraestructura.Migrations
                         name: "FK_recibo_Catalogo_TipoIdentificadorId",
                         column: x => x.TipoIdentificadorId,
                         principalTable: "Catalogo",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_recibo_usuario_UsuarioAsignadoId",
                         column: x => x.UsuarioAsignadoId,
                         principalTable: "usuario",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -185,20 +176,17 @@ namespace Infraestructura.Migrations
                         name: "FK_cambioEstado_Catalogo_EstadoId",
                         column: x => x.EstadoId,
                         principalTable: "Catalogo",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_cambioEstado_recibo_ReciboId",
                         column: x => x.ReciboId,
                         principalTable: "recibo",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_cambioEstado_usuario_UsuarioId",
                         column: x => x.UsuarioId,
                         principalTable: "usuario",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -221,26 +209,22 @@ namespace Infraestructura.Migrations
                         name: "FK_detalleRecibo_Catalogo_MarcaId",
                         column: x => x.MarcaId,
                         principalTable: "Catalogo",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_detalleRecibo_Catalogo_ModeloId",
                         column: x => x.ModeloId,
                         principalTable: "Catalogo",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_detalleRecibo_recibo_ReciboId",
                         column: x => x.ReciboId,
                         principalTable: "recibo",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_detalleRecibo_Servicio_ServicioId",
                         column: x => x.ServicioId,
                         principalTable: "Servicio",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
@@ -259,56 +243,6 @@ namespace Infraestructura.Migrations
                 column: "UsuarioId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_cliente_DepartamentoId",
-                table: "cliente",
-                column: "DepartamentoId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_cliente_MarcaId",
-                table: "cliente",
-                column: "MarcaId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_cliente_ModeloId",
-                table: "cliente",
-                column: "ModeloId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_cliente_MunicipioId",
-                table: "cliente",
-                column: "MunicipioId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_cliente_NacionalidadId",
-                table: "cliente",
-                column: "NacionalidadId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_cliente_TipoIdentificadorId",
-                table: "cliente",
-                column: "TipoIdentificadorId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_cliente_TipoPersonaId",
-                table: "cliente",
-                column: "TipoPersonaId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_cliente_UsuarioGentionId",
-                table: "cliente",
-                column: "UsuarioGentionId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_detalleRecibo_MarcaId",
-                table: "detalleRecibo",
-                column: "MarcaId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_detalleRecibo_ModeloId",
-                table: "detalleRecibo",
-                column: "ModeloId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_detalleRecibo_ReciboId",
                 table: "detalleRecibo",
                 column: "ReciboId");
@@ -323,65 +257,8 @@ namespace Infraestructura.Migrations
                 table: "recibo",
                 column: "AreaId");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_recibo_ClienteId",
-                table: "recibo",
-                column: "ClienteId");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_recibo_DescuentoId",
-                table: "recibo",
-                column: "DescuentoId");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_recibo_EstadoSefinId",
-                table: "recibo",
-                column: "EstadoSefinId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_recibo_EstadoSenasaId",
-                table: "recibo",
-                column: "EstadoSenasaId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_recibo_MonedaId",
-                table: "recibo",
-                column: "MonedaId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_recibo_RegionalId",
-                table: "recibo",
-                column: "RegionalId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_recibo_TipoIdentificadorId",
-                table: "recibo",
-                column: "TipoIdentificadorId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_recibo_UsuarioAsignadoId",
-                table: "recibo",
-                column: "UsuarioAsignadoId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_rolPermiso_PermisoId",
-                table: "rolPermiso",
-                column: "PermisoId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_rolPermiso_RolId",
-                table: "rolPermiso",
-                column: "RolId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Servicio_AreaId",
-                table: "Servicio",
-                column: "AreaId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Servicio_CategoriaId",
-                table: "Servicio",
-                column: "CategoriaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Servicio_DepartamentoId",
@@ -402,41 +279,6 @@ namespace Infraestructura.Migrations
                 name: "IX_Servicio_TipoServicioId",
                 table: "Servicio",
                 column: "TipoServicioId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_usuario_DepartamentoId",
-                table: "usuario",
-                column: "DepartamentoId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UsuarioArea_AreaId",
-                table: "UsuarioArea",
-                column: "AreaId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_UsuarioArea_UsuarioId",
-                table: "UsuarioArea",
-                column: "UsuarioId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_usuarioRegional_RegionalId",
-                table: "usuarioRegional",
-                column: "RegionalId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_usuarioRegional_UsuarioId",
-                table: "usuarioRegional",
-                column: "UsuarioId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_usuarioRol_RolId",
-                table: "usuarioRol",
-                column: "RolId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_usuarioRol_UsuarioId",
-                table: "usuarioRol",
-                column: "UsuarioId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
