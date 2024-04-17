@@ -45,7 +45,7 @@ namespace Infraestructura.Service.Permisos
             var document = new Document();
 
             var inst = PdfWriter.GetInstance(document, respuesta);
-            document.AddAuthor("SENASA");
+            document.AddAuthor("GQ racing Sport");
             document.Open();
 
             Encabezado(document, recibo);
@@ -73,8 +73,8 @@ namespace Infraestructura.Service.Permisos
             arlColumnas.Add(new ReporteColumna("Pagado en", 15, true, Element.ALIGN_CENTER, Element.ALIGN_CENTER, "d", FontFactory.TIMES_ROMAN, 8));
             arlColumnas.Add(new ReporteColumna("Procesado en", 15, true, Element.ALIGN_CENTER, Element.ALIGN_CENTER, "d", FontFactory.TIMES_ROMAN, 8));
             var Encabezado = "T.G.R.1";
-            var SubEncabezado = "SENASA";
-            var PiePagina = "Reporte SENASA";
+            var SubEncabezado = "GQ racing Sport";
+            var PiePagina = "Reporte GQ racing Sport";
             PdfPTable tablaTmp = new PdfPTable(arlColumnas.Count);
             PdfWriter m_writerTmp;
             IPdfPageEvent m_peTmp;
@@ -91,7 +91,7 @@ namespace Infraestructura.Service.Permisos
             m_writerTmp.PageEvent = m_peTmp;
 
 
-            document.AddAuthor("SENASA");
+            document.AddAuthor("GQ racing Sport");
             document.Open();
 
             tablaTmp.WidthPercentage = 100;
@@ -136,7 +136,7 @@ namespace Infraestructura.Service.Permisos
                             }
                             else if (i == 1)
                             {
-                                celdaTmp = new PdfPCell(new Phrase(String.Format("{0:" + udtCIDTmp.Formato + "}", "145- SENASA"), fuenteTmp));
+                                celdaTmp = new PdfPCell(new Phrase(String.Format("{0:" + udtCIDTmp.Formato + "}", "145- GQ racing Sport"), fuenteTmp));
                             }
                             else if (i == 2)
                             {
@@ -186,7 +186,7 @@ namespace Infraestructura.Service.Permisos
                             }
                             else if (i == 1)
                             {
-                                celdaTmp = new PdfPCell(new Phrase("145 - SENASA", fuenteTmp));
+                                celdaTmp = new PdfPCell(new Phrase("145 - GQ racing Sport", fuenteTmp));
                             }
                             else if (i == 2)
                             {
@@ -310,7 +310,7 @@ namespace Infraestructura.Service.Permisos
             celda.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
             tblEncabezado.AddCell(celda);
 
-            celda = new PdfPCell(new Paragraph("Servicio Nacional de Sanidad e Inocuidad Agroalimentaria.", AvenirNegroBold));
+            celda = new PdfPCell(new Paragraph("Taller Mecánico Automotriz, Enderezado y Pintura, Carwash Accesorios. Venta y Distribucion de Llantas.", AvenirNegroBold));
             celda.Border = Rectangle.NO_BORDER;
             celda.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
             tblEncabezado.AddCell(celda);
@@ -320,7 +320,7 @@ namespace Infraestructura.Service.Permisos
             celda.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
             tblEncabezado.AddCell(celda);
 
-            celda = new PdfPCell(new Paragraph(getNombreCatalogo(departamento), AvenirNegroBold)); //Departamento 
+            celda = new PdfPCell(new Paragraph("Taller de reparación de automóviles · Vendedor de neumáticos y tienda de reparación \n", AvenirNegroBold)); //Departamento 
             celda.Border = Rectangle.NO_BORDER;
             celda.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
             tblEncabezado.AddCell(celda);
@@ -336,7 +336,8 @@ namespace Infraestructura.Service.Permisos
             return catalogoBusquedad.Nombre;
         }
 
- 
+
+
         private void DataCuerpo(Document document, Dominio.Models.Recibo recibo)
         {
 
@@ -355,14 +356,28 @@ namespace Infraestructura.Service.Permisos
             Chunk txt1 = new Chunk("Identificacion: ", AvenirNegroMedium);
             Chunk txt2 = new Chunk(recibo.Identificacion, AvenirNegroBold);
             Chunk txt3 = new Chunk("\n", AvenirNegroMedium);
-            Chunk txt4 = new Chunk("Nombre o razon social: \n", AvenirNegroMedium);
+            Chunk txt4 = new Chunk("Nombre o razon: \n", AvenirNegroMedium);
             Chunk txt5 = new Chunk(recibo.NombreRazon, AvenirNegroBold);
+            Chunk txt6 = new Chunk("\nNombre Marca: ", AvenirNegroMedium);
+            Chunk txt7 = new Chunk(getNombreCatalogo(recibo.MarcaId), AvenirNegroBold);
+            Chunk txt8 = new Chunk("\nNombre Modelo: ", AvenirNegroMedium);
+            Chunk txt9 = new Chunk(getNombreCatalogo(recibo.ModeloId), AvenirNegroBold);
+
+
+
+  
+
             parteIzq.Add(txt0);
             parteIzq.Add(txt1);
             parteIzq.Add(txt2);
             parteIzq.Add(txt3);
             parteIzq.Add(txt4);
             parteIzq.Add(txt5);
+            parteIzq.Add(txt6);
+            parteIzq.Add(txt7);
+            parteIzq.Add(txt8);
+            parteIzq.Add(txt9);
+
             Paragraph parrafo = new Paragraph();
             parrafo.Add(parteIzq);
 
@@ -373,10 +388,10 @@ namespace Infraestructura.Service.Permisos
             //
             Phrase parteDere = new Phrase();
             Chunk txtD0 = new Chunk("\n", AvenirNegroMedium);
-            Chunk txtD1 = new Chunk("Numero de T.G.R.1: ", AvenirNegroMedium);
+            Chunk txtD1 = new Chunk("Numero de Recibo: ", AvenirNegroMedium);
             Chunk txtD2 = new Chunk(recibo.Id.ToString(), AvenirNegroBold);
             Chunk txtD3 = new Chunk("\n", AvenirNegroMedium);
-            Chunk txtD4 = new Chunk("Generado desde la plataforma de SEFIN. ", AvenirNegroBold);
+            Chunk txtD4 = new Chunk("Generado desde la plataforma de de pagos GQ racing Sport. ", AvenirNegroBold);
 
             parteDere.Add(txtD0);
             parteDere.Add(txtD1);
@@ -713,7 +728,7 @@ namespace Infraestructura.Service.Permisos
             tabla.AddCell(celda);
 
 
-            celda = new PdfPCell(new Paragraph("Monto (L.)", fEncabezado));
+            celda = new PdfPCell(new Paragraph("Monto ($.)", fEncabezado));
             celda.HorizontalAlignment = PdfPCell.ALIGN_RIGHT;
             celda.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
             celda.BackgroundColor = new BaseColor(255, 255, 255);
@@ -746,7 +761,7 @@ namespace Infraestructura.Service.Permisos
                 celda.Border = PdfPCell.NO_BORDER;
                 table.AddCell(celda);
 
-                celda = new PdfPCell(new Paragraph("L. " + recibo.MontoTotalRecibosTasas.ToString("0,0.00"), fSubEncabezado));
+                celda = new PdfPCell(new Paragraph("$. " + recibo.MontoTotalRecibosTasas.ToString("0,0.00"), fSubEncabezado));
                 celda.HorizontalAlignment = PdfPCell.ALIGN_RIGHT;
                 celda.FixedHeight = 20;
                 celda.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
@@ -762,7 +777,7 @@ namespace Infraestructura.Service.Permisos
                 celda.Border = PdfPCell.NO_BORDER;
                 table.AddCell(celda);
 
-                celda = new PdfPCell(new Paragraph("L. " + recibo.MontoTotalRecibosEmision.ToString("0,0.00"), fSubEncabezado));
+                celda = new PdfPCell(new Paragraph("$. " + recibo.MontoTotalRecibosEmision.ToString("0,0.00"), fSubEncabezado));
                 celda.HorizontalAlignment = PdfPCell.ALIGN_RIGHT;
                 celda.FixedHeight = 20;
                 celda.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
@@ -772,14 +787,14 @@ namespace Infraestructura.Service.Permisos
             }
             if (recibo.TotalRecibosMultas > 0)
             {
-                celda = new PdfPCell(new Paragraph("12499 - Multas y Penas Diversas", fSubEncabezado));
+                celda = new PdfPCell(new Paragraph("12499 - Multas", fSubEncabezado));
                 celda.HorizontalAlignment = PdfPCell.ALIGN_LEFT;
                 celda.FixedHeight = 20;
                 celda.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
                 celda.Border = PdfPCell.NO_BORDER;
                 table.AddCell(celda);
 
-                celda = new PdfPCell(new Paragraph("L. " + recibo.MontoTotalRecibosMultas.ToString("0,0.00"), fSubEncabezado));
+                celda = new PdfPCell(new Paragraph("$. " + recibo.MontoTotalRecibosMultas.ToString("0,0.00"), fSubEncabezado));
                 celda.HorizontalAlignment = PdfPCell.ALIGN_RIGHT;
                 celda.FixedHeight = 20;
                 celda.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
@@ -796,7 +811,7 @@ namespace Infraestructura.Service.Permisos
                 celda.Border = PdfPCell.NO_BORDER;
                 table.AddCell(celda);
 
-                celda = new PdfPCell(new Paragraph("L. " + recibo.MontoTotalRecibosDevolucion.ToString("0,0.00"), fSubEncabezado));
+                celda = new PdfPCell(new Paragraph("$. " + recibo.MontoTotalRecibosDevolucion.ToString("0,0.00"), fSubEncabezado));
                 celda.HorizontalAlignment = PdfPCell.ALIGN_RIGHT;
                 celda.FixedHeight = 20;
                 celda.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
@@ -813,7 +828,7 @@ namespace Infraestructura.Service.Permisos
                 celda.Border = PdfPCell.NO_BORDER;
                 table.AddCell(celda);
 
-                celda = new PdfPCell(new Paragraph("L. " + recibo.MontoTotalRecibosVentas.ToString("0,0.00"), fSubEncabezado));
+                celda = new PdfPCell(new Paragraph("$. " + recibo.MontoTotalRecibosVentas.ToString("0,0.00"), fSubEncabezado));
                 celda.HorizontalAlignment = PdfPCell.ALIGN_RIGHT;
                 celda.FixedHeight = 20;
                 celda.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
@@ -915,7 +930,7 @@ namespace Infraestructura.Service.Permisos
             //
             Phrase parteDere = new Phrase();
             Chunk txtD0 = new Chunk("Monto Total: ", Encabezado);
-            Chunk txtD1 = new Chunk("L. ", fSubEncabezado);
+            Chunk txtD1 = new Chunk("$. ", fSubEncabezado);
             Chunk txtD2 = new Chunk(montoTotal.ToString("0,0.00"), fSubEncabezado);
             parteDere.Add(txtD0);
             parteDere.Add(txtD1);
