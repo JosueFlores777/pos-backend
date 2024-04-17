@@ -320,11 +320,6 @@ namespace Infraestructura.Service.Permisos
             celda.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
             tblEncabezado.AddCell(celda);
 
-            celda = new PdfPCell(new Paragraph("Taller de reparación de automóviles · Vendedor de neumáticos y tienda de reparación \n", AvenirNegroBold)); //Departamento 
-            celda.Border = Rectangle.NO_BORDER;
-            celda.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
-            tblEncabezado.AddCell(celda);
-
             document.Add(tblEncabezado);
 
 
