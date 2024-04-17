@@ -77,7 +77,7 @@
   <ItemGroup>
     <None Remove="Recursos\firmaDigital.jpg" />
     <None Remove="Recursos\senasa.jpg" />
-    <None Remove="Recursos\logoSenasa.jpg" />
+    <None Remove="Recursos\logoSenasa.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -87,7 +87,7 @@
     <EmbeddedResource Include="Recursos\senasa.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Recursos\logoSenasa.jpg">
+    <EmbeddedResource Include="Recursos\logoSenasa.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
