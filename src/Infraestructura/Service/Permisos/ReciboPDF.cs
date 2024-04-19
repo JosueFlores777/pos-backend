@@ -61,6 +61,7 @@ namespace Infraestructura.Service.Permisos
         }
         public Stream GetReportePDF(ReciboReporteConsolidado recibo)
         {
+            
             ArrayList arlColumnas = new ArrayList();
             arlColumnas.Add(new ReporteColumna("Nro. Recibo", 10, true, Element.ALIGN_CENTER, Element.ALIGN_CENTER, "", FontFactory.TIMES_ROMAN, 8));
             arlColumnas.Add(new ReporteColumna("Insititución", 10, true, Element.ALIGN_CENTER, Element.ALIGN_LEFT, "", FontFactory.TIMES_ROMAN, 8));
@@ -72,7 +73,7 @@ namespace Infraestructura.Service.Permisos
             arlColumnas.Add(new ReporteColumna("Creado en", 15, true, Element.ALIGN_CENTER, Element.ALIGN_CENTER, "d", FontFactory.TIMES_ROMAN, 8));
             arlColumnas.Add(new ReporteColumna("Pagado en", 15, true, Element.ALIGN_CENTER, Element.ALIGN_CENTER, "d", FontFactory.TIMES_ROMAN, 8));
             arlColumnas.Add(new ReporteColumna("Procesado en", 15, true, Element.ALIGN_CENTER, Element.ALIGN_CENTER, "d", FontFactory.TIMES_ROMAN, 8));
-            var Encabezado = "T.G.R.1";
+            var Encabezado = "Recibos";
             var SubEncabezado = "GQ racing Sport";
             var PiePagina = "Reporte GQ racing Sport";
             PdfPTable tablaTmp = new PdfPTable(arlColumnas.Count);
@@ -202,7 +203,7 @@ namespace Infraestructura.Service.Permisos
                             }
                             else if (i == 5)
                             {
-                                celdaTmp = new PdfPCell(new Phrase("L. " + drwTmp.Monto.ToString(), fuenteTmp));
+                                celdaTmp = new PdfPCell(new Phrase("$. " + drwTmp.Monto.ToString(), fuenteTmp));
                             }
                             else if (i == 6)
                             {
@@ -417,7 +418,7 @@ namespace Infraestructura.Service.Permisos
             string tipomoneda = "";
             if (recibo.MonedaId == 64)
             {
-                tipomoneda = "L.";
+                tipomoneda = "$.";
             }
             else {
                 tipomoneda = "$ ";
@@ -574,7 +575,7 @@ namespace Infraestructura.Service.Permisos
             string tipomoneda = "";
             if (recibo.MonedaId == 64)
             {
-                tipomoneda = "L.";
+                tipomoneda = "$.";
             }
             else
             {
