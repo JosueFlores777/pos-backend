@@ -30,7 +30,7 @@ namespace Aplicacion.CommandHandlers
             var rec = reciboRepository.GetById(message.idRecibo);
             if (ambiente.Equals("test"))
             {
-                rec.PagarRecibo(DateTime.Now, "SENASA TEST");
+                rec.PagarRecibo(DateTime.Now, "BAC TEST");
             }
             reciboRepository.Update(rec.Id, rec);
             return new OkResponse();

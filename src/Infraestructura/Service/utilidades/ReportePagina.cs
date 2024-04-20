@@ -266,7 +266,7 @@ namespace Infraestructura.Service.utilidades
                     };
                     tblLogotipo.AddCell(cellTmp);
 
-                    cellTmp = new PdfPCell(new Phrase("145 - Servicio Nacional de Sanidad e Inocuidad Agroalimentaria\nReporte de Ingresos por Rubro", fEncabezado2))
+                    cellTmp = new PdfPCell(new Phrase("Reporteria de Sistema de GQ Racing", fEncabezado2))
                     {
                         Border = (int)CeldaBorde.ninguno,
                         HorizontalAlignment = Element.ALIGN_CENTER,

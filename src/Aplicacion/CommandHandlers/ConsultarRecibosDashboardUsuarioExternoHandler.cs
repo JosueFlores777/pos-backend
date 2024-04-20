@@ -57,7 +57,6 @@ namespace Aplicacion.CommandHandlers
             var include = new Includes<Dominio.Models.Recibo>(new[] { "DetalleRecibos", "DetalleRecibos.Servicio" });
 
             var respuesta = reciboRepository.Specify(new BuscarRecibosPorImportador(idImportador))
-                        .Specify(new BuscarRecibosPorEstadoSefin(7))
                         .Specify(new BuscarRecibosPorArea(message.AreaId))
                         .Specify(new BuscarRecibosPorRegional(message.RegionalId))
                         .Specify(new BuscarRecibosPorFecha(fecha1, fecha2))
