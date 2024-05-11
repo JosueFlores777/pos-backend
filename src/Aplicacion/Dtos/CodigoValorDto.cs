@@ -14,7 +14,10 @@ namespace Aplicacion.Dtos
 
     public class MarcaDto : CodigoValorDto { 
     }
-    
+    public class ExcusaDto : CodigoValorDto
+    {
+    }
+
     public class ModeloDto : CodigoValorDto
     {
     }

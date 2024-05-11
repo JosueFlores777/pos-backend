@@ -45,6 +45,7 @@ namespace Aplicacion.CommandHandlers
             }
             rec.Comentario = message.Recibo.Comentario;
             rec.RegionalId = message.Recibo.RegionalId;
+            rec.ExcusaId = message.Recibo.ExcusaId;
             reciboRepository.Update(rec.Id, rec);
             if (rec.ClienteId != 0) {
                 //correoHelper.EnviarPermisoCorreo(rec);

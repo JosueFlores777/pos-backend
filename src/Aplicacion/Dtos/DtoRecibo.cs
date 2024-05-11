@@ -30,6 +30,8 @@ namespace Aplicacion.Dtos
         public MarcaDto Marca { get; set; }
         public int? MarcaId { get; set; }
 
+        public ExcusaDto Excusa { get; set; }
+        public int? ExcusaId { get; set; }
 
         public ModeloDto Modelo { get; set; }
         public int? ModeloId { get; set; }
@@ -42,6 +44,8 @@ namespace Aplicacion.Dtos
         public bool RegionalBool { get; set; }
         public int? UsuarioAsignadoId { get; set; }
         public DtoUsuario UsuarioAsignado { get; set; }
+
+        public DateTime? FechaPrestacionServicio { get; set; }
         //
         public DateTime FechaCreacion { get; set; }
         public DateTime FechaPago { get; set; }

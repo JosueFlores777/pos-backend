@@ -40,7 +40,6 @@ namespace Aplicacion.CommandHandlers
             var usuario = usuarioRepository.GetById(tokeService.GetIdUsuario());
             var include = new Includes<Dominio.Models.Recibo>(new[] { "DetalleRecibos" , "DetalleRecibos.Servicio"  });
             var respuesta = reciboRepository.Paginar(message);
-            var ambiente = configuration.GetValue<string>("AppSettings:Environment");
             if (usuario.TipoUsuario == Usuario.tipoCliente) {
                 var importador = cllienteRepository.GetByIdEspecificacion(new BuscarClientePorIndentificador(tokeService.GetIdentificacionUsuario()));
                 idImportador =  importador.Id;
@@ -59,28 +58,6 @@ namespace Aplicacion.CommandHandlers
                 {
                     if ((recibo.EstadoSefinId == Recibo.EstadoReciboCreado || recibo.EstadoSefinId == Recibo.EstadoReciboPagado)  && DateTime.Now > recibo.LastSync.AddMinutes(5))
                     {
-                        if (ambiente.Equals("production")) {
-                            var sefinRecibo = sefinClient.GetRecibo((uint)recibo.Id);
-                            recibo.LastSync = DateTime.Now;
-                            if (sefinRecibo.ApiEstado == SeleccionarEstado(Recibo.EstadoReciboPagado))
-                            {
-                                recibo.PagarRecibo(sefinRecibo.FechaMod, sefinRecibo.UsuarioModificacion);
-                                Async = true;
-                            }
-                            else if (sefinRecibo.ApiEstado == SeleccionarEstado(Recibo.EstadoReciboEliminado))
-                            {
-
-                                recibo.EliminarRecibo(sefinRecibo.FechaMod);
-                                Async = true;
-                            }else if (sefinRecibo.ApiEstado == SeleccionarEstado(Recibo.EstadoReciboProcesado) && recibo.EstadoSefinId != Recibo.EstadoReciboProcesado)
-                            {
-
-                                recibo.ProcesarReciboTemporal("Procesado Por Administrador", recibo.RegionalId, 1, sefinRecibo.FechaMod);
-
-                            }
-                        } 
-                        
-                        
                         reciboRepository.Update(recibo.Id, recibo); 
                     }
                 }

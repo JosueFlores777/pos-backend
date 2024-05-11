@@ -31,25 +31,6 @@ namespace Aplicacion.CommandHandlers
         {
             //GETTING RECIBO FROM SEFIN CLIENT
             var recibo = reciboRepository.ReciboConDetalle(message.Id);
-            var ambiente = configuration.GetValue<string>("AppSettings:Environment");
-            if (ambiente.Equals("production")){
-                var sefinRecibo = sefinClient.GetRecibo((uint)recibo.Id);
-                recibo.LastSync = DateTime.Now;
-                if (sefinRecibo.ApiEstado == SeleccionarEstado(Recibo.EstadoReciboPagado))
-                {
-                    recibo.PagarRecibo(sefinRecibo.FechaMod, sefinRecibo.UsuarioModificacion);
-                }
-                else if (sefinRecibo.ApiEstado == SeleccionarEstado(Recibo.EstadoReciboEliminado))
-                {
-
-                    recibo.EliminarRecibo(sefinRecibo.FechaMod);
-
-                } else if (sefinRecibo.ApiEstado == SeleccionarEstado(Recibo.EstadoReciboProcesado) && recibo.EstadoSefinId != Recibo.EstadoReciboProcesado) {
-
-                    recibo.ProcesarReciboTemporal("Procesado Por Administrador",recibo.RegionalId,1,sefinRecibo.FechaMod);
-
-                }
-            }
             reciboRepository.Update(recibo.Id, recibo);
 
             recibo = reciboRepository.ReciboConDetalle(message.Id);

@@ -37,8 +37,11 @@ namespace Dominio.Models
         public int? RegionalId { get; set; }
         public Catalogo Descuento { get; set; }
         public int? DescuentoId { get; set; }
+        public Catalogo Excusa { get; set; }
+        public int? ExcusaId { get; set; }
         public Catalogo Area { get; set; }
         public int AreaId { get; set; }
+        public DateTime? FechaPrestacionServicio { get; set; }
         public DateTime FechaCreacion { get; set; }
         public DateTime LastSync { get; set; }
         public DateTime FechaPago { get; set; }
